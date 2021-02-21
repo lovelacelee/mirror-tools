@@ -1,5 +1,5 @@
-python -m pip install virtualenv
-python -m pip install virtualenvwrapper-win
+python -m pip install virtualenv -i https://pypi.tuna.tsinghua.edu.cn/simple
+python -m pip install virtualenvwrapper-win -i https://pypi.tuna.tsinghua.edu.cn/simple
 	
 python -m virtualenv venv
 

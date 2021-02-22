@@ -7,3 +7,5 @@ REM python -m virtualenv -p C:\Users\lovel\AppData\Local\Microsoft\WindowsApps\p
 cd venv\Scripts
 
 start activate.bat
+
+cd ..\..\

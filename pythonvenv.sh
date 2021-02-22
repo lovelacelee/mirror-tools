@@ -7,3 +7,5 @@ python -m virtualenv venv
 cd venv/Scripts
 
 ./activate
+
+cd ../../

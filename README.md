@@ -1,35 +1,6 @@
 # mirror-tools
 
-python mirror tools, 以清华源为pip源https://pypi.tuna.tsinghua.edu.cn/simple
+每个程序爱好者都会有自己的习惯，都会有自己的强迫症，都会有自己不断积累下的**小工具**。
 
+这个项目从效率和习惯角度出发，为自己在IT世界中的游荡提速。
 
-
-## Windows下使用python虚拟环境
-
-执行pythonvenv.bat后
-
-将mkvirtualenv.bat所在的目录加入Windows的系统PATH目录中
-
-之后workon命令即可使用
-
-
-
-## 环境恢复
-
-1. pip导出所有依赖名及版本号到txt文件中
-
-```
-pip freeze > requirements.txt
-```
-
-2. 将对应依赖导出到指定文件夹中
-
-```
-pip download -d ./py_packages -r requirements.txt
-```
-
-3. 在无网络环境下导入依赖
-
-```
-pip install --no-index --find-links=py_packages/ -r requiments.txt
-```

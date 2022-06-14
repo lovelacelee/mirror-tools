@@ -1,6 +1,5 @@
 # mirror-tools
 
-每个程序爱好者都会有自己的习惯，都会有自己的强迫症，都会有自己不断积累下的**小工具**。
+Mirror-Tools(mt) collects some programming skills and high-efficiency commands.
 
-这个项目从效率和习惯角度出发，为自己在IT世界中的游荡提速。
 

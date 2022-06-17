@@ -2,13 +2,13 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 18:23:54
+ * @LastEditTime    : 2022-06-17 18:27:25
  * @LastEditors     : Lovelace
  * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
  * Copyright 2022 Lovelace, All Rights Reserved.
  *
- * Only some emojis are supported. https://gitmoji.dev/
+ * Only some emojis are supported. For more info: https://gitmoji.dev/
  */
 package emoji
 
@@ -72,6 +72,7 @@ var Emojis = []Emoji{
 	{Emoji: "💬", Code: ":speech_balloon:", Name: []string{"chat"}},
 	{Emoji: "🚩", Code: ":triangular_flag_on_post:", Name: []string{"flags", "重大", "important"}},
 	{Emoji: "🧑‍💻", Code: ":technologist:", Name: []string{"tech", "improve", "experience"}},
+	{Emoji: "🏷️", Code: "Add or update types.", Name: []string{"tag"}},
 } // end of var Emojis
 
 func (e *Emoji) String() string {

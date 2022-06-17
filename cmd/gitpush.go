@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-17 17:51:48
+ * @LastEditTime    : 2022-06-17 18:42:15
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -36,8 +36,18 @@ func init() {
 }
 
 func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
-	ColorInfo("git push %s", remote)
-	cmd := exec.Command("git", "push", remote)
+	var cmd *exec.Cmd
+	if tagVersion != "" {
+		ColorInfo("git push %s --tags", remote)
+		cmd = exec.Command("git", "push", remote, "--tags")
+	} else {
+		ColorInfo("git push %s", remote)
+		cmd = exec.Command("git", "push", remote)
+	}
+	RunInDir(w.Filesystem.Root(), cmd)
+
+	ColorInfo("git push --tags")
+	cmd = exec.Command("git", "push", "--tags")
 	RunInDir(w.Filesystem.Root(), cmd)
 
 	if verbose {
@@ -68,6 +78,11 @@ func gitPushList(w *git.Worktree, repo *git.Repository) error {
 	cmd = exec.Command("git", "commit", "-m", commitInfo)
 	RunInDir(w.Filesystem.Root(), cmd)
 
+	if tagVersion != "" {
+		setTag(repo, tagVersion)
+	}
+
+	// Push the latest changes to the remote
 	list, err := repo.Remotes()
 	for _, r := range list {
 		gitPush(w, repo, r.Config().Name)

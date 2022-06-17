@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 18:10:17
+ * @LastEditTime    : 2022-06-17 18:11:35
  * @LastEditors     : Lovelace
  * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
@@ -32,7 +32,7 @@ var Emojis = []Emoji{
 	{Emoji: "🔖", Code: ":bookmark:", Name: []string{"版本", "bookmark", "release"}},
 	{Emoji: "🐛", Code: ":bug:", Name: []string{"问题", "bug"}},
 	{Emoji: "🚧", Code: ":construction:", Name: []string{"构建", "build"}},
-	{Emoji: "✅", Code: ":check:", Name: []string{"检查", "check", "test", "pass"}},
+	{Emoji: "✅", Code: ":white_check_mark:", Name: []string{"检查", "check", "test", "pass"}},
 	{Emoji: "🚑", Code: ":ambulance:", Name: []string{"紧急", "emergency"}},
 	{Emoji: "⬇️", Code: ":arrow_down:", Name: []string{"回退", "downgrade"}},
 	{Emoji: "⬆️", Code: ":arrow_up:", Name: []string{"升级", "upgrade"}},

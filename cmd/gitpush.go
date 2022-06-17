@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-17 17:21:11
+ * @LastEditTime    : 2022-06-17 17:33:29
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -63,7 +63,7 @@ func gitPushList(w *git.Worktree, repo *git.Repository) error {
 	RunInDir(w.Filesystem.Root(), cmd)
 
 	ColorInfo("git commit %s -m %s", w.Filesystem.Root(), emoji.Message(commitMessage))
-	cmd = exec.Command("git", "commit", "-m", emoji.Message(commitMessage))
+	cmd = exec.Command("git", "commit", "-m", "\""+emoji.Message(commitMessage+"\""))
 	RunInDir(w.Filesystem.Root(), cmd)
 
 	list, err := repo.Remotes()

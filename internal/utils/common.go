@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:50:33
- * @LastEditTime    : 2022-06-16 18:15:53
+ * @LastEditTime    : 2022-06-17 10:07:21
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /internal/utils/common.go
@@ -36,6 +36,14 @@ func CheckIfError(err error) {
 
 	fmt.Printf("%s\n", fmt.Sprintf("error: %s", err))
 	os.Exit(1)
+}
+
+func ShowIfError(err error) {
+	if err == nil {
+		return
+	}
+
+	fmt.Printf("%s\n", fmt.Sprintf("%s", err))
 }
 
 // ColorInfo should be used to display messages

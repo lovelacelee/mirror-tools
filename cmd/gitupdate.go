@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 18:00:17
- * @LastEditTime    : 2022-06-16 18:22:25
+ * @LastEditTime    : 2022-06-17 11:34:25
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/gitupdate.go
@@ -26,6 +26,30 @@ func init() {
 	gitCmd.AddCommand(gitUpdateCmd)
 }
 
+func gitPull(w *git.Worktree, r *git.Repository, remote string) error {
+	// Pull the latest changes from the origin remote and merge into the current branch
+	ColorInfo("git pull %s", remote)
+	err := w.Pull(&git.PullOptions{RemoteName: remote})
+	ShowIfError(err)
+
+	// Print the latest commit that was just pulled
+	ref, err := r.Head()
+	CheckIfError(err)
+	latestcommit, err := r.CommitObject(ref.Hash())
+	CheckIfError(err)
+
+	fmt.Println(latestcommit)
+	return err
+}
+
+func gitPullList(w *git.Worktree, repo *git.Repository) error {
+	list, err := repo.Remotes()
+	for _, r := range list {
+		gitPull(w, repo, r.Config().Name)
+	}
+	return err
+}
+
 var gitUpdateCmd = &cobra.Command{
 	Use:   "update",
 	Short: "Pull the latest code from multiple remote repositories.",
@@ -40,21 +64,8 @@ var gitUpdateCmd = &cobra.Command{
 		// Get the working directory for the repository
 		w, err := r.Worktree()
 		CheckIfError(err)
+		gitPullList(w, r)
 
-		// Pull the latest changes from the origin remote and merge into the current branch
-		ColorInfo("git pull origin")
-		err = w.Pull(&git.PullOptions{RemoteName: "github"})
-		CheckIfError(err)
-
-		// Print the latest commit that was just pulled
-		ref, err := r.Head()
-		CheckIfError(err)
-		latestcommit, err := r.CommitObject(ref.Hash())
-		CheckIfError(err)
-
-		fmt.Println(latestcommit)
 		return nil
 	},
 }
-
-// gitUpdateCmd.Flags().IntVarP(&echoTimes, "times", "t", 1, "times to echo the input")

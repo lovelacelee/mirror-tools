@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-17 16:58:46
+ * @LastEditTime    : 2022-06-17 17:10:11
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -35,18 +35,8 @@ func init() {
 
 func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
 
-	ColorInfo("git add %s", w.Filesystem.Root())
-	cmd := exec.Command("git", "add", ".")
-	RunInDir(w.Filesystem.Root(), cmd)
-
-	ColorInfo("git commit %s -m %s", w.Filesystem.Root(), emoji.Message(commitMessage))
-	cmd = exec.Command("git", "commit", "-m", emoji.Message(commitMessage))
-	RunInDir(w.Filesystem.Root(), cmd)
-	return nil
-
-	// Pull the latest changes from the origin remote and merge into the current branch
-	ColorInfo("git pull %s", remote)
-	err := w.Pull(&git.PullOptions{RemoteName: remote})
+	ColorInfo("git push %s", remote)
+	err := r.Push(&git.PushOptions{RemoteName: remote})
 	ShowIfError(err)
 
 	// Print the latest commit that was just pulled
@@ -60,6 +50,14 @@ func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
 }
 
 func gitPushList(w *git.Worktree, repo *git.Repository) error {
+	ColorInfo("git add %s", w.Filesystem.Root())
+	cmd := exec.Command("git", "add", ".")
+	RunInDir(w.Filesystem.Root(), cmd)
+
+	ColorInfo("git commit %s -m %s", w.Filesystem.Root(), emoji.Message(commitMessage))
+	cmd = exec.Command("git", "commit", "-m", emoji.Message(commitMessage))
+	RunInDir(w.Filesystem.Root(), cmd)
+
 	list, err := repo.Remotes()
 	for _, r := range list {
 		gitPush(w, repo, r.Config().Name)

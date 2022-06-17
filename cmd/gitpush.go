@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-17 18:42:15
+ * @LastEditTime    : 2022-06-17 18:44:20
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -44,10 +44,6 @@ func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
 		ColorInfo("git push %s", remote)
 		cmd = exec.Command("git", "push", remote)
 	}
-	RunInDir(w.Filesystem.Root(), cmd)
-
-	ColorInfo("git push --tags")
-	cmd = exec.Command("git", "push", "--tags")
 	RunInDir(w.Filesystem.Root(), cmd)
 
 	if verbose {

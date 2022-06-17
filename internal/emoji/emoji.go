@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 18:16:50
+ * @LastEditTime    : 2022-06-17 18:19:06
  * @LastEditors     : Lovelace
  * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
@@ -43,7 +43,6 @@ var Emojis = []Emoji{
 	{Emoji: "🔧", Code: ":wrench:", Name: []string{"配置", "settings", "cfg", "config"}},
 	{Emoji: "➕", Code: ":heavy_plus_sign:", Name: []string{"新增", "add"}},
 	{Emoji: "➖", Code: ":heavy_minus_sign:", Name: []string{"移除", "remove"}},
-	{Emoji: "❌", Code: ":circle_with_x:", Name: []string{"无效", "na"}},
 	{Emoji: "⚡️", Code: ":zap:", Name: []string{"效率", "performance"}},
 	{Emoji: "📈", Code: ":chart_with_upwards_trend:", Name: []string{"分析", "analysis"}},
 	{Emoji: "🚀", Code: ":rocket:", Name: []string{"速度", "性能", "提升", "speed"}},
@@ -65,6 +64,9 @@ var Emojis = []Emoji{
 	{Emoji: "📌", Code: ":pushpin:", Name: []string{"specific", "version"}},
 	{Emoji: "♻️", Code: ":recycle:", Name: []string{"refactor", "recycle"}},
 	{Emoji: "💩", Code: ":poop:", Name: []string{"damn", "bad"}},
+	{Emoji: "⏪️", Code: ":rewind:", Name: []string{"revert", "restore"}},
+	{Emoji: "🔀", Code: ":twisted_rightwards_arrows:", Name: []string{"merge", "branch"}},
+	{Emoji: "📦️", Code: ":package:", Name: []string{"pack", "dist"}},
 } // end of var Emojis
 
 func (e *Emoji) String() string {

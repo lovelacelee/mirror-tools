@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 18:11:35
+ * @LastEditTime    : 2022-06-17 18:16:50
  * @LastEditors     : Lovelace
  * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
@@ -60,6 +60,11 @@ var Emojis = []Emoji{
 	{Emoji: "🔥", Code: ":fire:", Name: []string{"hot"}},
 	{Emoji: "✨", Code: ":sparkles:", Name: []string{"新特性", "feature"}},
 	{Emoji: "🔐", Code: ":closed_lock_with_key:", Name: []string{"secrets"}},
+	{Emoji: "🚨", Code: ":rotating_light:", Name: []string{"compiler", "compiling"}},
+	{Emoji: "💚", Code: ":green_heart:", Name: []string{"ci", "continuous", "integration"}},
+	{Emoji: "📌", Code: ":pushpin:", Name: []string{"specific", "version"}},
+	{Emoji: "♻️", Code: ":recycle:", Name: []string{"refactor", "recycle"}},
+	{Emoji: "💩", Code: ":poop:", Name: []string{"damn", "bad"}},
 } // end of var Emojis
 
 func (e *Emoji) String() string {

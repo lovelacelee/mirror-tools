@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 17:28:38
+ * @LastEditTime    : 2022-06-17 17:49:43
  * @LastEditors     : Lovelace
  * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
@@ -40,7 +40,7 @@ var Emojis = []Emoji{
 	{Name: []string{"界面", "ui"}, Code: ":lipstick:", Emoji: "💄"},
 	{Name: []string{"演示", "示例", "example"}, Code: ":clapper:", Emoji: "🎬 "},
 	{Name: []string{"警告", "warning"}, Code: ":rotating_light:", Emoji: "🚨"},
-	{Name: []string{"配置", "settings"}, Code: ":wrench:", Emoji: "🔧"},
+	{Name: []string{"配置", "settings", "cfg", "config"}, Code: ":wrench:", Emoji: "🔧"},
 	{Name: []string{"新增", "add"}, Code: ":heavy_plus_sign:", Emoji: "➕"},
 	{Name: []string{"移除", "remove"}, Code: ":heavy_minus_sign:", Emoji: "➖"},
 	{Name: []string{"无效", "na"}, Code: ":circle_with_x:", Emoji: "❌"},

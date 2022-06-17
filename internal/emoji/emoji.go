@@ -2,13 +2,13 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 16:53:22
+ * @LastEditTime    : 2022-06-17 17:28:38
  * @LastEditors     : Lovelace
- * @Description     :
+ * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
  * Copyright 2022 Lovelace, All Rights Reserved.
  *
- *
+ * Only some emojis are supported. https://gitmoji.dev/
  */
 package emoji
 
@@ -26,7 +26,7 @@ type Emoji struct {
 } // end of type Emoji
 
 var Emojis = []Emoji{
-	{Name: []string{"default"}, Code: ":circle_arrow_right:", Emoji: "➡️"},
+	{Name: []string{"default", "Introduce", "changes"}, Code: ":boom:", Emoji: "💥"},
 	{Name: []string{"首次提交", "first", "commit"}, Code: ":tada:", Emoji: "🎉"},
 	{Name: []string{"新功能", "new"}, Code: ":new:", Emoji: "🆕"},
 	{Name: []string{"版本", "bookmark", "release"}, Code: ":bookmark:", Emoji: "🔖"},
@@ -34,8 +34,8 @@ var Emojis = []Emoji{
 	{Name: []string{"构建", "build"}, Code: ":build:", Emoji: "🚧"},
 	{Name: []string{"检查", "check"}, Code: ":check:", Emoji: "✅"},
 	{Name: []string{"紧急", "emergency"}, Code: ":ambulance:", Emoji: "🚑"},
-	{Name: []string{"回退", "downgrade"}, Code: ":circle_arrow_down:", Emoji: "⬇️"},
-	{Name: []string{"升级", "upgrade"}, Code: ":circle_arrow_up:", Emoji: "⬆️"},
+	{Name: []string{"回退", "downgrade"}, Code: ":arrow_down:", Emoji: "⬇️"},
+	{Name: []string{"升级", "upgrade"}, Code: ":arrow_up:", Emoji: "⬆️"},
 	{Name: []string{"语言", "language"}, Code: ":globe_with_meridians:", Emoji: "🌐"},
 	{Name: []string{"界面", "ui"}, Code: ":lipstick:", Emoji: "💄"},
 	{Name: []string{"演示", "示例", "example"}, Code: ":clapper:", Emoji: "🎬 "},

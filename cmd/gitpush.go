@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-17 17:10:11
+ * @LastEditTime    : 2022-06-17 17:17:53
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -25,10 +25,12 @@ import (
 var (
 	tagVersion    string
 	commitMessage string
+	verbose       bool
 )
 
 func init() {
 	gitCmd.AddCommand(gitPushCmd)
+	gitPushCmd.Flags().BoolVarP(&verbose, "version", "v", false, "Show some details")
 	gitPushCmd.Flags().StringVarP(&tagVersion, "tag", "t", "", "Tag version")
 	gitPushCmd.Flags().StringVarP(&commitMessage, "message", "m", "", "Commit message")
 }
@@ -38,14 +40,15 @@ func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
 	ColorInfo("git push %s", remote)
 	err := r.Push(&git.PushOptions{RemoteName: remote})
 	ShowIfError(err)
+	if verbose {
+		// Print the latest commit that was just pulled
+		ref, err := r.Head()
+		CheckIfError(err)
+		latestcommit, err := r.CommitObject(ref.Hash())
+		CheckIfError(err)
 
-	// Print the latest commit that was just pulled
-	ref, err := r.Head()
-	CheckIfError(err)
-	latestcommit, err := r.CommitObject(ref.Hash())
-	CheckIfError(err)
-
-	fmt.Println(latestcommit)
+		fmt.Println(latestcommit)
+	}
 	return err
 }
 

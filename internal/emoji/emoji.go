@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 14:06:05
- * @LastEditTime    : 2022-06-17 17:49:43
+ * @LastEditTime    : 2022-06-17 18:09:22
  * @LastEditors     : Lovelace
  * @Description     : git emoji
  * @FilePath        : /internal/emoji/emoji.go
@@ -17,46 +17,49 @@ import (
 )
 
 type Emoji struct {
-	// Name is the name of the emoji.
-	Name []string
-	// Code is the code of the emoji.
-	Code string
 	// Emoji is the description of the emoji.
 	Emoji string
+	// Code is the code of the emoji.
+	Code string
+	// Name is the name of the emoji.
+	Name []string
 } // end of type Emoji
 
 var Emojis = []Emoji{
-	{Name: []string{"default", "Introduce", "changes"}, Code: ":boom:", Emoji: "💥"},
-	{Name: []string{"首次提交", "first", "commit"}, Code: ":tada:", Emoji: "🎉"},
-	{Name: []string{"新功能", "new"}, Code: ":new:", Emoji: "🆕"},
-	{Name: []string{"版本", "bookmark", "release"}, Code: ":bookmark:", Emoji: "🔖"},
-	{Name: []string{"问题", "bug"}, Code: ":bug:", Emoji: "🐛"},
-	{Name: []string{"构建", "build"}, Code: ":build:", Emoji: "🚧"},
-	{Name: []string{"检查", "check"}, Code: ":check:", Emoji: "✅"},
-	{Name: []string{"紧急", "emergency"}, Code: ":ambulance:", Emoji: "🚑"},
-	{Name: []string{"回退", "downgrade"}, Code: ":arrow_down:", Emoji: "⬇️"},
-	{Name: []string{"升级", "upgrade"}, Code: ":arrow_up:", Emoji: "⬆️"},
-	{Name: []string{"语言", "language"}, Code: ":globe_with_meridians:", Emoji: "🌐"},
-	{Name: []string{"界面", "ui"}, Code: ":lipstick:", Emoji: "💄"},
-	{Name: []string{"演示", "示例", "example"}, Code: ":clapper:", Emoji: "🎬 "},
-	{Name: []string{"警告", "warning"}, Code: ":rotating_light:", Emoji: "🚨"},
-	{Name: []string{"配置", "settings", "cfg", "config"}, Code: ":wrench:", Emoji: "🔧"},
-	{Name: []string{"新增", "add"}, Code: ":heavy_plus_sign:", Emoji: "➕"},
-	{Name: []string{"移除", "remove"}, Code: ":heavy_minus_sign:", Emoji: "➖"},
-	{Name: []string{"无效", "na"}, Code: ":circle_with_x:", Emoji: "❌"},
-	{Name: []string{"效率", "performance"}, Code: ":zap:", Emoji: "⚡"},
-	{Name: []string{"分析", "analysis"}, Code: ":chart_with_upwards_trend:", Emoji: "📈"},
-	{Name: []string{"速度", "性能", "提升", "speed"}, Code: ":rocket:", Emoji: "🚀"},
-	{Name: []string{"文档", "doc", "document", "documents", "help"}, Code: ":memo:", Emoji: "📝"},
-	{Name: []string{"重构", "rebuild"}, Code: ":hammer:", Emoji: "🔨"},
-	{Name: []string{"格式化", "format"}, Code: ":art:", Emoji: "🎨"},
-	{Name: []string{"修复", "fix", "repair"}, Code: ":pencil2:", Emoji: "✏️"},
-	{Name: []string{"安全", "security", "safety"}, Code: ":lock:", Emoji: "🔒"},
-	{Name: []string{"发布", "flag"}, Code: ":checkered_flag:", Emoji: "🏁"},
-	{Name: []string{"linux"}, Code: ":penguin:", Emoji: "🐧"},
-	{Name: []string{"windows"}, Code: ":computer:", Emoji: "💻"},
-	{Name: []string{"mac"}, Code: ":apple:", Emoji: "🍎"},
-	{Name: []string{"docker"}, Code: ":whale:", Emoji: "🐳"},
+	{Emoji: "💥", Code: ":boom:", Name: []string{"default", "Introduce", "changes"}},
+	{Emoji: "🎉", Code: ":tada:", Name: []string{"首次提交", "first", "commit"}},
+	{Emoji: "🆕", Code: ":new:", Name: []string{"新功能", "new"}},
+	{Emoji: "🔖", Code: ":bookmark:", Name: []string{"版本", "bookmark", "release"}},
+	{Emoji: "🐛", Code: ":bug:", Name: []string{"问题", "bug"}},
+	{Emoji: "🚧", Code: ":build:", Name: []string{"构建", "build"}},
+	{Emoji: "✅", Code: ":check:", Name: []string{"检查", "check", "test", "pass"}},
+	{Emoji: "🚑", Code: ":ambulance:", Name: []string{"紧急", "emergency"}},
+	{Emoji: "⬇️", Code: ":arrow_down:", Name: []string{"回退", "downgrade"}},
+	{Emoji: "⬆️", Code: ":arrow_up:", Name: []string{"升级", "upgrade"}},
+	{Emoji: "🌐", Code: ":globe_with_meridians:", Name: []string{"语言", "language"}},
+	{Emoji: "💄", Code: ":lipstick:", Name: []string{"界面", "ui"}},
+	{Emoji: "🎬", Code: ":clapper:", Name: []string{"演示", "示例", "example"}},
+	{Emoji: "🚨", Code: ":rotating_light:", Name: []string{"警告", "warning"}},
+	{Emoji: "🔧", Code: ":wrench:", Name: []string{"配置", "settings", "cfg", "config"}},
+	{Emoji: "➕", Code: ":heavy_plus_sign:", Name: []string{"新增", "add"}},
+	{Emoji: "➖", Code: ":heavy_minus_sign:", Name: []string{"移除", "remove"}},
+	{Emoji: "❌", Code: ":circle_with_x:", Name: []string{"无效", "na"}},
+	{Emoji: "⚡️", Code: ":zap:", Name: []string{"效率", "performance"}},
+	{Emoji: "📈", Code: ":chart_with_upwards_trend:", Name: []string{"分析", "analysis"}},
+	{Emoji: "🚀", Code: ":rocket:", Name: []string{"速度", "性能", "提升", "speed"}},
+	{Emoji: "📝", Code: ":memo:", Name: []string{"文档", "doc", "document", "documents", "help"}},
+	{Emoji: "🔨", Code: ":hammer:", Name: []string{"重构", "rebuild"}},
+	{Emoji: "🎨", Code: ":art:", Name: []string{"格式化", "format"}},
+	{Emoji: "✏️", Code: ":pencil2:", Name: []string{"修复", "fix", "repair"}},
+	{Emoji: "🔒", Code: ":lock:", Name: []string{"安全", "security", "safety"}},
+	{Emoji: "🏁", Code: ":checkered_flag:", Name: []string{"发布", "flag"}},
+	{Emoji: "🐧", Code: ":penguin:", Name: []string{"linux"}},
+	{Emoji: "💻", Code: ":computer:", Name: []string{"windows"}},
+	{Emoji: "🍎", Code: ":apple:", Name: []string{"mac"}},
+	{Emoji: "🐳", Code: ":whale:", Name: []string{"docker"}},
+	{Emoji: "🔥", Code: ":fire:", Name: []string{"hot"}},
+	{Emoji: "✨", Code: ":sparkles:", Name: []string{"新特性", "feature"}},
+	{Emoji: "🔐", Code: ":closed_lock_with_key:", Name: []string{"secrets"}},
 } // end of var Emojis
 
 func (e *Emoji) String() string {

@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:50:33
- * @LastEditTime    : 2022-06-17 10:07:21
+ * @LastEditTime    : 2022-06-20 17:57:01
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /internal/utils/common.go
@@ -17,6 +17,19 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+)
+
+var (
+	ANSI_CYAN    = "\x1b[36;1m"
+	ANSI_RESET   = "\x1b[0m"
+	ANSI_DEFAULT = "\x1b[39;1m"
+	ANSI_BLUE    = "\x1b[34;1m"
+	ANSI_BLACK   = "\x1b[30;1m"
+	ANSI_RED     = "\x1b[31;1m"
+	ANSI_GREEN   = "\x1b[32;1m"
+	ANSI_YELLOW  = "\x1b[33;1m"
+	ANSI_WHITE   = "\x1b[37;1m"
+	ANSI_MAGENTA = "\x1b[35;1m"
 )
 
 // ExitIfError should be used to naively panics if an error is not nil.
@@ -48,12 +61,16 @@ func ShowIfError(err error) {
 
 // ColorInfo should be used to display messages
 func ColorInfo(format string, args ...interface{}) {
-	fmt.Printf("\x1b[34;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
+	fmt.Printf("%s%s%s\n", ANSI_GREEN, fmt.Sprintf(format, args...), ANSI_RESET)
 }
 
 // Warning should be used to display a warning
 func ColorWarning(format string, args ...interface{}) {
-	fmt.Printf("\x1b[36;1m%s\x1b[0m\n", fmt.Sprintf(format, args...))
+	fmt.Printf("%s%s%s\n", ANSI_MAGENTA, fmt.Sprintf(format, args...), ANSI_RESET)
+}
+
+func ColorError(format string, args ...interface{}) {
+	fmt.Printf("%s%s%s\n", ANSI_RED, fmt.Sprintf(format, args...), ANSI_RESET)
 }
 
 func RunInDir(dir string, cmd *exec.Cmd) {

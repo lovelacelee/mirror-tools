@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-20 14:08:58
+ * @LastEditTime    : 2022-06-20 15:00:35
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -89,7 +89,7 @@ var gitPushCmd = &cobra.Command{
 	Use:     "push",
 	Short:   "Push the latest code from multiple remote repositories.",
 	Long:    "Commit, creat tag and push the latest code from multiple remote repositories.",
-	Example: `  mt git push -t v1.0.0 -m "Release v1.0.0"`,
+	Example: `  clsmt git push -t v1.0.0 -m "Release v1.0.0"`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// We instantiate a new repository targeting the given path (the .git folder)
 		path, _ := os.Getwd()

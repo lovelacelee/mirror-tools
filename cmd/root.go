@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:09:28
- * @LastEditTime    : 2022-06-20 14:01:53
+ * @LastEditTime    : 2022-06-20 15:09:57
  * @LastEditors     : Lovelace
  * @Description     : The root command of Cobra.
  * @FilePath        : /cmd/root.go
@@ -18,8 +18,7 @@ import (
 	"os"
 )
 
-var mtHelp string = `Mirror-Tools is a set of personal assistant of Lovelace(https://github.com/lovelacelee)
-maintained since 2022, when I started to learn Go.
+var mtHelp string = `Mirror-Tools(clsmt) is a set of personal assistant of Lovelace(https://github.com/lovelacelee), 
 Complete documentation is available at https://github.com/lovelacelee/mirror-tools.`
 var Verbose bool
 
@@ -28,12 +27,13 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "mt",
-	Short: "mt is a short description of mirror-tools. ",
+	Use:   "clsmt",
+	Short: "clsmt is a short description of mirror-tools. ",
 	Long:  mtHelp,
 	Run: func(cmd *cobra.Command, args []string) {
 		// Do Stuff Here
-		fmt.Println("Root CMD")
+		fmt.Printf("\n%s\n", mtHelp)
+		fmt.Println("Use \"clsmt [command] --help\" for more information about a command.")
 	},
 }
 

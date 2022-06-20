@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:41:07
- * @LastEditTime    : 2022-06-16 17:43:35
+ * @LastEditTime    : 2022-06-20 15:00:46
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/version.go
@@ -26,7 +26,7 @@ func init() {
 
 var versionCmd = &cobra.Command{
 	Use:   "version",
-	Short: "Print the version number of mt",
+	Short: "Print the version number of clsmt",
 	Long:  `Print software version.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Mirror-Tools version:", Version)

@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 18:00:17
- * @LastEditTime    : 2022-06-17 11:34:25
+ * @LastEditTime    : 2022-06-20 14:07:43
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/gitupdate.go
@@ -32,13 +32,15 @@ func gitPull(w *git.Worktree, r *git.Repository, remote string) error {
 	err := w.Pull(&git.PullOptions{RemoteName: remote})
 	ShowIfError(err)
 
-	// Print the latest commit that was just pulled
-	ref, err := r.Head()
-	CheckIfError(err)
-	latestcommit, err := r.CommitObject(ref.Hash())
-	CheckIfError(err)
+	if Verbose {
+		// Print the latest commit that was just pulled
+		ref, err := r.Head()
+		CheckIfError(err)
+		latestcommit, err := r.CommitObject(ref.Hash())
+		CheckIfError(err)
 
-	fmt.Println(latestcommit)
+		fmt.Println(latestcommit)
+	}
 	return err
 }
 

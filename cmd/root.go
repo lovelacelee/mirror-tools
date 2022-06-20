@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:09:28
- * @LastEditTime    : 2022-06-16 17:24:05
+ * @LastEditTime    : 2022-06-20 14:01:53
  * @LastEditors     : Lovelace
  * @Description     : The root command of Cobra.
  * @FilePath        : /cmd/root.go
@@ -21,6 +21,11 @@ import (
 var mtHelp string = `Mirror-Tools is a set of personal assistant of Lovelace(https://github.com/lovelacelee)
 maintained since 2022, when I started to learn Go.
 Complete documentation is available at https://github.com/lovelacelee/mirror-tools.`
+var Verbose bool
+
+func init() {
+	rootCmd.PersistentFlags().BoolVarP(&Verbose, "verbose", "v", false, "Show some details")
+}
 
 var rootCmd = &cobra.Command{
 	Use:   "mt",

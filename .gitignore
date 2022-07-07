@@ -2,3 +2,4 @@
 vendor
 *.exe
 *.txt
+dist/

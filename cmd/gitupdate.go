@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 18:00:17
- * @LastEditTime    : 2022-06-20 14:07:43
+ * @LastEditTime    : 2022-06-22 15:34:06
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/gitupdate.go
@@ -18,6 +18,7 @@ import (
 	"os"
 
 	"github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing/transport/http"
 	. "github.com/lovelacelee/mirror-tools/internal/utils"
 	"github.com/spf13/cobra"
 )
@@ -27,9 +28,10 @@ func init() {
 }
 
 func gitPull(w *git.Worktree, r *git.Repository, remote string) error {
+	gitAuth := &http.BasicAuth{Username: os.Getenv("GITUSER"), Password: os.Getenv("GITPASS")}
 	// Pull the latest changes from the origin remote and merge into the current branch
 	ColorInfo("git pull %s", remote)
-	err := w.Pull(&git.PullOptions{RemoteName: remote})
+	err := w.Pull(&git.PullOptions{RemoteName: remote, Auth: gitAuth})
 	ShowIfError(err)
 
 	if Verbose {

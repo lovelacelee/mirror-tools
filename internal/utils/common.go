@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:50:33
- * @LastEditTime    : 2022-06-20 17:57:01
+ * @LastEditTime    : 2022-06-22 15:28:52
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /internal/utils/common.go
@@ -71,6 +71,10 @@ func ColorWarning(format string, args ...interface{}) {
 
 func ColorError(format string, args ...interface{}) {
 	fmt.Printf("%s%s%s\n", ANSI_RED, fmt.Sprintf(format, args...), ANSI_RESET)
+}
+
+func ColorImportant(format string, args ...interface{}) {
+	fmt.Printf("%s%s%s\n", ANSI_BLUE, fmt.Sprintf(format, args...), ANSI_RESET)
 }
 
 func RunInDir(dir string, cmd *exec.Cmd) {

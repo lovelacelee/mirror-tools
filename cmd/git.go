@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:45:09
- * @LastEditTime    : 2022-06-20 18:05:22
+ * @LastEditTime    : 2022-06-22 15:31:04
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/git.go
@@ -35,7 +35,7 @@ var gitCmd = &cobra.Command{
 	// 	return nil
 	// },
 	RunE: func(cmd *cobra.Command, args []string) error {
-		ColorInfo("Git commands:")
+		ColorInfo("Useful git commands:")
 		fmt.Printf("%-40s %v\n", "git submodule update --init --recursive", "初次更新带有submodule的git仓库")
 		fmt.Printf("%-40s %v\n", "git rm --cached <file>", "停止跟踪文件但不删除")
 		fmt.Printf("%-40s %v\n", "git log -p <file>", "查看指定文件的提交历史")
@@ -46,10 +46,12 @@ var gitCmd = &cobra.Command{
 		fmt.Printf("%-40s %v\n", "git checkout <branch/tag>", "切换到指定分支或标签")
 		fmt.Printf("%-40s %v\n", "git branch -d <branch>", "删除本地分支")
 		fmt.Printf("%-40s %v\n", "git tag -d <tagname>", "删除标签")
-		shellCmd := exec.Command("git", "status", "--porcelain")
-		out, _ := shellCmd.Output()
 
+		ColorInfo("\nStatus of repo:")
+		shellCmd := exec.Command("git", "status", "--porcelain")
+		out, err := shellCmd.Output()
 		fmt.Println("\n", string(out))
-		return nil
+		ColorImportant("\nclsmt git authentication use system environment, set GITUSER and GITPASS as default git auth.")
+		return err
 	},
 }

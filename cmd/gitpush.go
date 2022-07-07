@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-06-20 15:00:35
+ * @LastEditTime    : 2022-07-07 15:51:49
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -93,7 +93,9 @@ var gitPushCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		// We instantiate a new repository targeting the given path (the .git folder)
 		path, _ := os.Getwd()
-		r, err := git.PlainOpen(path)
+		r, err := git.PlainOpenWithOptions(path, &git.PlainOpenOptions{
+			DetectDotGit: true,
+		})
 		CheckIfError(err)
 
 		// Get the working directory for the repository

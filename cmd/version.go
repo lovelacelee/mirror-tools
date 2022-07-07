@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:41:07
- * @LastEditTime    : 2022-06-20 15:00:46
+ * @LastEditTime    : 2022-07-07 10:50:49
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/version.go
@@ -18,7 +18,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var Version string = "0.0.1"
+var Version string = "1.0.3"
 
 func init() {
 	rootCmd.AddCommand(versionCmd)

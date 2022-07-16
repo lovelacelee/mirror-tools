@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 10:47:10
- * @LastEditTime    : 2022-07-07 15:51:49
+ * @LastEditTime    : 2022-07-16 16:26:17
  * @LastEditors     : Lovelace
  * @Description     : Commit the changes to the local repository and push them to multiple remotes
  * @FilePath        : /cmd/gitpush.go
@@ -15,8 +15,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/go-git/go-git/v5"
+	"github.com/lovelacelee/clsgo/pkg/utils"
 	"github.com/lovelacelee/mirror-tools/internal/emoji"
-	. "github.com/lovelacelee/mirror-tools/internal/utils"
 	"github.com/spf13/cobra"
 	"os"
 	"os/exec"
@@ -37,20 +37,20 @@ func init() {
 func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
 	var cmd *exec.Cmd
 	if tagVersion != "" {
-		ColorInfo("git push %s --tags", remote)
+		l.Infof("git push %s --tags", remote)
 		cmd = exec.Command("git", "push", remote, "--tags")
 	} else {
-		ColorInfo("git push %s", remote)
+		l.Infof("git push %s", remote)
 		cmd = exec.Command("git", "push", remote)
 	}
-	RunInDir(w.Filesystem.Root(), cmd)
+	utils.RunInDir(w.Filesystem.Root(), cmd)
 
 	if Verbose {
 		// Print the latest commit that was just pulled
 		ref, err := r.Head()
-		CheckIfError(err)
+		utils.WarnIfError(err)
 		latestcommit, err := r.CommitObject(ref.Hash())
-		CheckIfError(err)
+		utils.WarnIfError(err)
 
 		fmt.Println(latestcommit)
 		return err
@@ -59,9 +59,9 @@ func gitPush(w *git.Worktree, r *git.Repository, remote string) error {
 }
 
 func gitPushList(w *git.Worktree, repo *git.Repository) error {
-	ColorInfo("git add %s", w.Filesystem.Root())
+	l.Infof("git add %s", w.Filesystem.Root())
 	cmd := exec.Command("git", "add", ".")
-	RunInDir(w.Filesystem.Root(), cmd)
+	utils.RunInDir(w.Filesystem.Root(), cmd)
 
 	var commitInfo string
 	if commitMessage != "" {
@@ -69,9 +69,9 @@ func gitPushList(w *git.Worktree, repo *git.Repository) error {
 	} else {
 		commitInfo = emoji.Message("Update")
 	}
-	ColorInfo("git commit %s -m \"%s\"", w.Filesystem.Root(), commitInfo)
+	l.Infof("git commit %s -m \"%s\"", w.Filesystem.Root(), commitInfo)
 	cmd = exec.Command("git", "commit", "-m", commitInfo)
-	RunInDir(w.Filesystem.Root(), cmd)
+	utils.RunInDir(w.Filesystem.Root(), cmd)
 
 	if tagVersion != "" {
 		setTag(repo, tagVersion)
@@ -96,11 +96,11 @@ var gitPushCmd = &cobra.Command{
 		r, err := git.PlainOpenWithOptions(path, &git.PlainOpenOptions{
 			DetectDotGit: true,
 		})
-		CheckIfError(err)
+		utils.WarnIfError(err)
 
 		// Get the working directory for the repository
 		w, err := r.Worktree()
-		CheckIfError(err)
+		utils.WarnIfError(err)
 		gitPushList(w, r)
 
 		return nil

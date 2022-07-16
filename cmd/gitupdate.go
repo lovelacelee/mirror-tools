@@ -2,8 +2,8 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 18:00:17
- * @LastEditTime    : 2022-07-07 15:55:03
- * @LastEditors     : Lovelace
+ * @LastEditTime    : 2022-07-16 16:18:22
+ * @LastEditors     : Lee
  * @Description     :
  * @FilePath        : /cmd/gitupdate.go
  * Copyright 2022 Lovelace, All Rights Reserved.
@@ -33,12 +33,12 @@ func gitPull(w *git.Worktree, r *git.Repository, remote string) error {
 	gitAuth := GetAuth(remote)
 
 	// Pull the latest changes from the origin remote and merge into the current branch
-	ColorInfo("git pull %s", remote)
+	l.Infof("git pull %s", remote)
 	err := w.Pull(&git.PullOptions{RemoteName: remote, Auth: gitAuth})
 	if err != ErrRepoUpdated {
-		ShowIfError(err)
+		l.Info(err.Error())
 	} else {
-		ColorInfo("%v", err)
+		l.Printf("%v", err)
 	}
 
 	if Verbose {

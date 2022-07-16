@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-20 15:29:02
- * @LastEditTime    : 2022-06-20 18:00:21
+ * @LastEditTime    : 2022-07-16 16:21:20
  * @LastEditors     : Lovelace
  * @Description     : Create or delete a virtual environment.
  * @FilePath        : /cmd/pyvenv.go
@@ -20,7 +20,6 @@ import (
 	"path"
 	"runtime"
 
-	. "github.com/lovelacelee/mirror-tools/internal/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -43,17 +42,17 @@ var pyVenvCmd = &cobra.Command{
 		var shellCmd *exec.Cmd
 		cwd, _ := os.Getwd()
 		if pyVenvCreate {
-			ColorInfo("[%s] Create a virtual environment.", PythonCmd)
+			l.Infof("[%s] Create a virtual environment.", PythonCmd)
 			shellCmd = exec.Command(PythonCmd, "-m", "venv", "venv")
 
 			// fmt.Println(shellCmd.Output())
 			err := shellCmd.Run()
 			if err != nil {
-				ColorError("[%s] Create a virtual environment failed.", PythonCmd)
+				l.Errorf("[%s] Create a virtual environment failed.", PythonCmd)
 			}
 		}
 		if pyVenvDelete {
-			ColorInfo("Delete a virtual environment.")
+			l.Info("Delete a virtual environment.")
 			os.RemoveAll(path.Join(cwd, "venv"))
 		} else {
 			sysType := runtime.GOOS

@@ -2,8 +2,8 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-17 18:34:19
- * @LastEditTime    : 2022-06-17 18:42:44
- * @LastEditors     : Lovelace
+ * @LastEditTime    : 2022-07-16 16:17:12
+ * @LastEditors     : Lee
  * @Description     :
  * @FilePath        : /cmd/gitTag.go
  * Copyright 2022 Lovelace, All Rights Reserved.
@@ -15,19 +15,17 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
-	. "github.com/lovelacelee/mirror-tools/internal/utils"
 )
 
 func tagExists(tag string, r *git.Repository) bool {
 	tagFoundErr := "tag was found"
-	ColorInfo("git show-ref --tag")
+	l.Info("git show-ref --tag")
 	tags, err := r.TagObjects()
 	if err != nil {
-		log.Printf("get tags error: %s", err)
+		l.Printf("get tags error: %s", err)
 		return false
 	}
 	res := false
@@ -39,7 +37,7 @@ func tagExists(tag string, r *git.Repository) bool {
 		return nil
 	})
 	if err != nil && err.Error() != tagFoundErr {
-		log.Printf("iterate tags error: %s", err)
+		l.Printf("iterate tags error: %s", err)
 		return false
 	}
 	return res
@@ -47,22 +45,22 @@ func tagExists(tag string, r *git.Repository) bool {
 
 func setTag(r *git.Repository, tag string) (bool, error) {
 	if tagExists(tag, r) {
-		log.Printf("tag %s already exists", tag)
+		l.Printf("tag %s already exists", tag)
 		return false, nil
 	}
-	log.Printf("Set tag %s", tag)
+	l.Printf("Set tag %s", tag)
 	h, err := r.Head()
 	if err != nil {
-		log.Printf("get HEAD error: %s", err)
+		l.Printf("get HEAD error: %s", err)
 		return false, err
 	}
-	ColorInfo("git tag -a %s %s -m \"%s\"", tag, h.Hash(), tag)
+	l.Infof("git tag -a %s %s -m \"%s\"", tag, h.Hash(), tag)
 	_, err = r.CreateTag(tag, h.Hash(), &git.CreateTagOptions{
 		Message: tag,
 	})
 
 	if err != nil {
-		log.Printf("create tag error: %s", err)
+		l.Printf("create tag error: %s", err)
 		return false, err
 	}
 

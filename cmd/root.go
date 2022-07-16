@@ -2,8 +2,8 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:09:28
- * @LastEditTime    : 2022-06-20 15:09:57
- * @LastEditors     : Lovelace
+ * @LastEditTime    : 2022-07-16 15:45:12
+ * @LastEditors     : Lee
  * @Description     : The root command of Cobra.
  * @FilePath        : /cmd/root.go
  * Copyright 2022 Lovelace, All Rights Reserved.
@@ -14,9 +14,12 @@ package cmd
 
 import (
 	"fmt"
+	"github.com/lovelacelee/clsgo/pkg/log"
 	"github.com/spf13/cobra"
 	"os"
 )
+
+var l = log.ClsLog()
 
 var mtHelp string = `Mirror-Tools(clsmt) is a set of personal assistant of Lovelace(https://github.com/lovelacelee), 
 Complete documentation is available at https://github.com/lovelacelee/mirror-tools.`

@@ -2,8 +2,8 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-20 15:57:07
- * @LastEditTime    : 2022-07-16 11:37:55
- * @LastEditors     : Lee
+ * @LastEditTime    : 2022-07-16 16:20:37
+ * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/py.go
  * Copyright 2022 Lovelace, All Rights Reserved.
@@ -15,7 +15,6 @@ package cmd
 import (
 	"fmt"
 
-	. "github.com/lovelacelee/mirror-tools/internal/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -37,7 +36,7 @@ var pyCmd = &cobra.Command{
 	// 	return nil
 	// },
 	RunE: func(cmd *cobra.Command, args []string) error {
-		ColorInfo("Supported functions:")
+		l.Warn("Supported functions:")
 		fmt.Printf("%-40s %v\n", "python venv", "Python virtual environment manager")
 
 		return nil

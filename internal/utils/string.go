@@ -2,8 +2,8 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-07-07 14:54:56
- * @LastEditTime    : 2022-07-07 15:42:35
- * @LastEditors     : Lovelace
+ * @LastEditTime    : 2022-07-16 16:02:20
+ * @LastEditors     : Lee
  * @Description     :
  * @FilePath        : /internal/utils/string.go
  * Copyright 2022 Lovelace, All Rights Reserved.

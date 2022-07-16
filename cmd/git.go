@@ -2,7 +2,7 @@
  * @Author          : Lovelace
  * @Github          : https://github.com/lovelacelee
  * @Date            : 2022-06-16 17:45:09
- * @LastEditTime    : 2022-07-07 15:52:33
+ * @LastEditTime    : 2022-07-16 17:02:09
  * @LastEditors     : Lovelace
  * @Description     :
  * @FilePath        : /cmd/git.go
@@ -18,7 +18,7 @@ import (
 	"os/exec"
 
 	"github.com/go-git/go-git/v5/plumbing/transport/http"
-	. "github.com/lovelacelee/mirror-tools/internal/utils"
+	"github.com/lovelacelee/mirror-tools/internal/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -60,10 +60,10 @@ var gitCmd = &cobra.Command{
 		u := os.Getenv("GITUSER")
 		p := os.Getenv("GITPASS")
 		t := os.Getenv("GITHUB_PA_TOKEN")
-		ColorImportant("GITUSER: %s \nGITPASS: %s \nGITHUB_PA_TOKEN: %s", u, HiddenSuffix(p, 4), HiddenSuffix(t, 16))
+		l.Printf("GITUSER: %s \nGITPASS: %s \nGITHUB_PA_TOKEN: %s", u, utils.HiddenSuffix(p, 4), utils.HiddenSuffix(t, 16))
 		shellCmd := exec.Command("git", "status")
 		out, err := shellCmd.Output()
-		ColorInfo("\n%s", string(out))
+		l.Printf("\n%s", string(out))
 		return err
 	},
 }
@@ -80,7 +80,7 @@ func GetAuth(remote string) (gitAuth *http.BasicAuth) {
 	} else if envUser != "" {
 		user = envUser
 	} else {
-		ExitWith("GITUSER must be set or use -u/--user.")
+		utils.ExitWith("GITUSER must be set or use -u/--user.")
 	}
 	if remote == "github" {
 		if GithubPAToken != "" {
@@ -88,7 +88,7 @@ func GetAuth(remote string) (gitAuth *http.BasicAuth) {
 		} else if envToken != "" {
 			pass = envToken
 		} else {
-			ExitWith("GITHUB_PA_TOKEN must be set or use -T/--token.")
+			utils.ExitWith("GITHUB_PA_TOKEN must be set or use -T/--token.")
 		}
 	} else {
 		if GitPassword != "" {
@@ -96,7 +96,7 @@ func GetAuth(remote string) (gitAuth *http.BasicAuth) {
 		} else if envPass != "" {
 			pass = envPass
 		} else {
-			ExitWith("GITPASS must be set or use -p/--password.")
+			utils.ExitWith("GITPASS must be set or use -p/--password.")
 		}
 	}
 
